@@ -46,7 +46,7 @@ Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek BersihXpre
     *(Ganti `https://github.com/your-username/BersihXpress.git` dengan URL repositori Anda)*
 
 2.  **Konfigurasi Database:**
-    *   Buat database baru di server MySQL/MariaDB Anda (misal: `bersihxpress_db`).
+    *   Buat database baru di server MySQL/MariaDB Anda (misal: `bersihxpress`).
     *   Impor skema database dari file `config/bersihxpress.sql` ke database yang baru Anda buat.
     *   Perbarui kredensial database di `config/database.php` (atau file konfigurasi database yang relevan) sesuai dengan pengaturan Anda.
 
@@ -70,17 +70,15 @@ Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek BersihXpre
 6.  **Akses Aplikasi:**
     *   Buka browser Anda dan navigasikan ke URL di mana aplikasi Anda di-host (misal: `http://localhost/BersihXpress`).
     *   Jika Anda mengakses dari browser, Anda akan diarahkan ke halaman login (`auth/masuk.php`).
-    *   Jika Anda mensimulasikan akses dari Android WebView (dengan memodifikasi User Agent atau membuat aplikasi WebView), Anda akan melalui alur onboarding terlebih dahulu.
+    *   Jika Anda mensimulasikan akses dari Android WebView (dengan memodifikasi User Agent atau membuat aplikasi WebView), Anda akan melalui alur onboarding terlebih dahulu.  
 
 ## Penggunaan
 
 *   **Untuk Owner**: Akses melalui browser web biasa dan masuk menggunakan kredensial owner.
+*   > Login Owner : [**Email :** owner@bersihxpress.com | **Password  :** owner123 ]
 *   **Untuk Karyawan**: Karyawan dapat masuk melalui browser web atau melalui Android WebView jika aplikasi mobile disediakan.
+*   > Login Karyawan : [**Email :** karyawan@bersihxpress.com | **Password  :** karyawan123 ]
 
 ## Kontribusi
 
 Jika Anda ingin berkontribusi pada proyek ini, silakan fork repositori, buat branch baru, lakukan perubahan Anda, dan ajukan pull request.
-
-## Lisensi
-
-[TBD - Tentukan lisensi Anda di sini, contoh: MIT License]
