@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Karyawan - BersihXpress</title>
+
+    <!-- (Komentar) PERUBAHAN: Path disesuaikan (naik 2 level) -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/webview.css">
+    <script src="../../assets/js/webview.js"></script>
+    <script src="../../assets/js/tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 flex flex-col h-screen">
+    <!-- (Komentar) PERUBAHAN: Path disesuaikan -->
+    <div id="loading-overlay" class="loading-container">
+        <img src="../../assets/images/loading.gif" alt="Memuat..." class="loading-indicator">
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- (Komentar) 1. KONTEN UTAMA (DASHBOARD)                  -->
+    <!-- ====================================================== -->
+    <div id="main-content" class="flex-grow flex flex-col overflow-hidden">
+
+        <!-- (Komentar) Wrapper Sticky (Sama) -->
+        <div class="flex-shrink-0">
+            <header class="relative bg-blue-600 h-56 w-full rounded-b-[40px] p-6 text-white z-10">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-2xl font-bold">Hi, John Doe</h1>
+                        <p class="text-sm opacity-90">BersihXpress</p>
+                    </div>
+                    <img src="https://placehold.co/48x48/FFFFFF/3B82F6?text=J" alt="Avatar Pengguna"
+                        class="w-12 h-12 rounded-full border-2 border-white/50">
+                </div>
+            </header>
+            <main class="relative z-20 -mt-24 px-6">
+                <section class="bg-white rounded-lg shadow-md p-5">
+                    <!-- (Komentar) Statistik Karyawan (Sama) -->
+                    <div class="flex justify-between text-center border-b pb-4">
+                        <div class="w-1/3">
+                            <p class="text-lg font-bold text-gray-900">Rp 95.000</p>
+                            <span class="text-sm text-gray-500">Estimasi Komisi</span>
+                        </div>
+                        <div class="w-1/3 border-l">
+                            <p class="text-lg font-bold text-gray-900">109</p>
+                            <span class="text-sm text-gray-500">Diproses</span>
+                        </div>
+                        <div class="w-1/3 border-l">
+                            <p class="text-lg font-bold text-gray-900">125</p>
+                            <span class="text-sm text-gray-500">Selesai</span>
+
+                        </div>
+                    </div>
+                    <div class="flex justify-around text-center pt-4">
+                        <div>
+                            <p class="text-xl font-bold text-gray-900">36 Kg</p>
+                            <span class="text-sm text-gray-500">Kilogram</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-gray-900">91 Pcs</p>
+                            <span class="text-sm text-gray-500">Satuan</span>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-gray-900">79 M</p>
+                            <span class="text-sm text-gray-500">Meteran</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- (Komentar) Area Konten Scrollable -->
+        <div class="flex-grow overflow-y-auto no-scrollbar px-6 pb-24">
+
+            <!-- (Komentar) Aksi Cepat (Grid 3-Kolom) (Sama) -->
+            <section class="mt-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-3">Aksi Cepat</h2>
+                <div class="grid grid-cols-3 gap-3 text-center">
+                    <button id="btn-open-transaksi"
+                        class="bg-white text-gray-700 rounded-lg p-3 shadow flex flex-col items-center justify-center hover:bg-gray-50">
+                        <svg data-feather="file-plus" class="w-6 h-6 mb-1 text-blue-600"></svg>
+                        <span class="text-xs font-medium">Buat Transaksi</span>
+                    </button>
+                    <button id="btn-open-absensi"
+                        class="bg-white text-gray-700 rounded-lg p-3 shadow flex flex-col items-center justify-center hover:bg-gray-50">
+                        <svg data-feather="user-check" class="w-6 h-6 mb-1 text-green-600"></svg>
+                        <span class="text-xs font-medium">Absensi</span>
+                    </button>
+                    <a href="pelanggan.html"
+                        class="bg-white text-gray-700 rounded-lg p-3 shadow flex flex-col items-center justify-center hover:bg-gray-50">
+                        <svg data-feather="users" class="w-6 h-6 mb-1 text-purple-600"></svg>
+                        <span class="text-xs font-medium">Data Pelanggan</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- (Komentar) PERUBAHAN BESAR: Mengganti "Daftar Transaksi" dengan "Tugas Saya" (TAB) -->
+<section class="mt-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-3">Tugas Saya</h2>
+
+                <div class="flex space-x-2 bg-gray-200 p-1 rounded-lg">
+                    <button class="tugas-tab-button aksi-tab-button-active w-1/2 py-2 rounded-md text-sm"
+                        data-target="#tab-dikerjakan">
+                        Masih Dikerjakan (2)
+                    </button>
+                    <button class="tugas-tab-button w-1/2 py-2 rounded-md text-sm text-gray-600"
+                        data-target="#tab-selesai-hari-ini">
+                        Selesai Hari Ini (1)
+                    </button>
+                </div>
+
+                <div id="tab-dikerjakan" class="tugas-tab-panel mt-4">
+                    <div class="bg-white rounded-lg shadow p-4 divide-y divide-gray-100">
+                        <button class="w-full flex justify-between items-center text-left py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Siti (#0913124)</p>
+                                <p class="text-xs text-gray-500">Masuk: 14:00</p>
+                            </div>
+                            <span
+                                class="text-xs font-semibold bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">Diproses</span>
+                        </button>
+                        <button class="w-full flex justify-between items-center text-left py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Ahmad (#0913125)</p>
+                                <p class="text-xs text-gray-500">Masuk: 17:00</p>
+                            </div>
+                            <span
+                                class="text-xs font-semibold bg-yellow-100 text-yellow-700 rounded-full px-2 py-0.5">Antrian</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="tab-selesai-hari-ini" class="tugas-tab-panel mt-4 hidden">
+                    <div class="bg-white rounded-lg shadow p-4 divide-y divide-gray-100">
+                        <button class="w-full flex justify-between items-center text-left py-3">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Kosimudin (#0913123)</p>
+                                <p class="text-xs text-gray-500">Selesai: 16:00</p>
+                            </div>
+                            <span
+                                class="text-xs font-semibold bg-green-100 text-green-700 rounded-full px-2 py-0.5">Selesai</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </div> <!-- (Komentar) Penutup Area Scroll -->
+
+    </div> <!-- (Komentar) Penutup main-content -->
+
+    <!-- ====================================================== -->
+    <!-- (Komentar) 2. NAVIGASI BAWAH (3 TOMBOL)                -->
+    <!-- ====================================================== -->
+<nav
+    class="sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 grid grid-cols-4 gap-2 px-4 py-3 shadow-[0_-2px_5px_rgba(0,0,0,0.05)] flex-shrink-0 z-20">
+    
+    <a href="dashboard.html" class="flex flex-col items-center text-blue-600 bg-blue-100 rounded-lg px-4 py-2">
+        <svg data-feather="home" class="w-6 h-6"></svg>
+        <span class="text-xs mt-1 font-semibold">Beranda</span>
+    </a>
+    
+    <a href="transaksi.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+        <svg data-feather="file-text" class="w-6 h-6"></svg>
+        <span class="text-xs mt-1">Transaksi</span>
+    </a>
+
+    <a href="laporan.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+        <svg data-feather="bar-chart-2" class="w-6 h-6"></svg>
+        <span class="text-xs mt-1">Laporan</span>
+    </a>
+    
+    <a href="profile.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+        <svg data-feather="user" class="w-6 h-6"></svg>
+        <span class="text-xs mt-1">Akun</span>
+    </a>
+</nav>
+
+
+    <!-- ====================================================== -->
+    <!-- (Komentar) 3. KONTAINER MODAL (POPUP)                  -->
+    <!-- ====================================================== -->
+    <div id="modal-container" class="hidden z-30">
+        <div id="modal-backdrop" class="modal-backdrop fixed inset-0 bg-black/50 z-40 opacity-0"></div>
+
+        <!-- (Komentar) MODAL 1: Opsi Buat Transaksi (Sama seperti sebelumnya) -->
+        <div id="modal-buat-transaksi"
+            class="modal-popup fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-auto">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3">
+                    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+                </div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Buat Transaksi</h2><button
+                        class="btn-close-global p-1 text-gray-500 hover:text-gray-800"><svg data-feather="x"
+                            class="w-6 h-6"></svg></button>
+                </div>
+            </div>
+            <div class="px-6 pb-6 space-y-3 overflow-y-auto no-scrollbar">
+                <button id="btn-transaksi-manual"
+                    class="w-full flex items-center justify-between bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-left hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gray-100 rounded-lg mr-3"><svg data-feather="box"
+                                class="w-5 h-5 text-gray-700"></svg></div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Transaksi Manual</p>
+                            <p class="text-sm text-gray-500">Manual input</p>
+                        </div>
+                    </div><svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                </button>
+                <button id="btn-transaksi-template"
+                    class="w-full flex items-center justify-between bg-white border border-gray-200 rounded-lg shadow-sm p-4 text-left hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gray-100 rounded-lg mr-3"><svg data-feather="grid"
+                                class="w-5 h-5 text-gray-700"></svg></div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Transaksi Template</p>
+                            <p class="text-sm text-gray-500">Pilih dari paket layanan jadi</p>
+                        </div>
+                    </div><svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                </button>
+            </div>
+
+            <div class="flex-shrink-0 p-6 bg-white border-t border-gray-100">
+                <button
+                    class="btn-close-global w-full bg-white border border-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50">
+                    Batal
+                </button>
+            </div>
+        </div>
+
+        <!-- (Komentar) MODAL 2: Form Transaksi Manual (Sudah ada) -->
+        <div id="modal-rincian-transaksi"
+            class="modal-popup hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-[90vh]">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3">
+                    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+                </div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Buat Transaksi Manual</h2>
+                    <button class="btn-close-global p-1 text-gray-500 hover:text-gray-800"><svg data-feather="x"
+                            class="w-6 h-6"></svg></button>
+                </div>
+            </div>
+            <div class="flex-grow overflow-y-auto p-6 no-scrollbar">
+                <form id="form-buat-transaksi" class="space-y-6">
+
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">1. Informasi Pelanggan</h3>
+                        <div class="space-y-4">
+                            <div><label for="cari_pelanggan_manual" class="text-sm font-medium text-gray-600">Cari
+                                    Pelanggan
+                                    (Nama / No HP)</label>
+                                <div class="relative mt-1"><span
+                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                            data-feather="search" class="h-5 w-5 text-gray-400"></svg></span><input
+                                        type="text" id="cari_pelanggan_manual"
+                                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                        placeholder="Cari pelanggan yang sudah ada...">
+                                </div>
+                            </div>
+                            <p class="text-sm text-left text-gray-500 -my-2">atau masukkan data pelanggan baru ...</p>
+                            <div>
+                                <label for="nama_pelanggan_manual" class="text-sm font-medium text-gray-600">Nama
+                                    Pelanggan
+                                    Baru</label>
+                                <div class="relative mt-1"><span
+                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                            data-feather="user" class="h-5 w-5 text-gray-400"></svg></span><input
+                                        type="text" id="nama_pelanggan_manual"
+                                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                        placeholder="Nama Pelanggan Baru"></div>
+                            </div>
+                            <div><label for="no_handphone_manual" class="text-sm font-medium text-gray-600">No Handphone
+                                    (WA)</label>
+                                <div class="relative mt-1"><span
+                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                            data-feather="phone" class="h-5 w-5 text-gray-400"></svg></span><input
+                                        type="tel" id="no_handphone_manual"
+                                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                        placeholder="No Handphone Pelanggan"></div>
+                            </div>
+                            <div><label for="alamat_manual" class="text-sm font-medium text-gray-600">Alamat
+                                    (Opsional)</label>
+                                <div class="relative mt-1"><span
+                                        class="absolute inset-y-0 left-0 top-3 pl-3 flex items-start pointer-events-none"><svg
+                                            data-feather="map-pin" class="h-5 w-5 text-gray-400"></svg></span><textarea
+                                        id="alamat_manual" rows="2"
+                                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                        placeholder="Alamat untuk data / pengantaran"></textarea></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">2. Informasi Pesanan</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="tgl_selesai_manual" class="text-sm font-medium text-gray-600">Estimasi
+                                    Selesai</label>
+                                <input type="datetime-local" id="tgl_selesai_manual"
+                                    class="w-full mt-1 px-3 py-3 border border-gray-300 rounded-lg">
+                            </div>
+
+                            <div>
+                                <label for="status_awal_manual" class="text-sm font-medium text-gray-600">Status
+                                    Awal</label>
+                                <select id="status_awal_manual"
+                                    class="w-full mt-1 py-3 px-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="Antrian" selected>Antrian (Diterima)</option>
+                                    <option value="Diproses">Langsung Diproses</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">3. Rincian Layanan</h3>
+                        <div class="border-b pb-3 mb-3">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-sm font-medium text-gray-600">Layanan 1</label>
+                                <button type="button" class="text-red-500 hover:text-red-700">
+                                    <svg data-feather="trash-2" class="w-4 h-4"></svg>
+                                </button>
+                            </div>
+                            <select
+                                class="w-full py-3 px-3 border border-gray-300 rounded-lg bg-white mb-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>-- Pilih Layanan (dari Kelola Layanan) --</option>
+                                <option value="7000" selected>Kiloan Reguler (Rp 7.000/kg)</option>
+                                <option value="10000">Kiloan Ekspres (Rp 10.000/kg)</option>
+                                <option value="15000">Satuan - Jas (Rp 15.000/pcs)</option>
+                                <option value="25000">Satuan - Bed Cover (Rp 25.000/pcs)</option>
+                            </select>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="number" placeholder="Qty (Kg / Pcs)"
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg" value="1">
+                                <input type="text" placeholder="Harga Total"
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg bg-gray-100"
+                                    value="Rp 7.000" readonly>
+                            </div>
+                        </div>
+                        <button type="button"
+                            class="w-full border-2 border-dashed border-blue-500 text-blue-500 font-semibold py-3 px-4 rounded-lg hover:bg-blue-50">
+                            + Tambah Layanan Lain
+                        </button>
+                        <div>
+                            <div class="border-t pt-4"></div>
+                            <label for="catatan_manual" class="text-sm font-medium text-gray-600">Catatan
+                                (Opsional)</label>
+                            <div class="relative mt-1"><span
+                                    class="absolute inset-y-0 left-0 top-3 pl-3 flex items-start pointer-events-none"><svg
+                                        data-feather="clipboard" class="h-5 w-5 text-gray-400"></svg></span><textarea
+                                    id="catatan_manual" rows="2"
+                                    class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                    placeholder="Misal: Alergi parfum, minta lipat rapi..."></textarea></div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">4. Rincian Pembayaran</h3>
+                        <div class="space-y-4">
+                            <div><label class="text-sm font-medium text-gray-600">Subtotal</label><input type="text"
+                                    class="w-full mt-1 px-3 py-3 border border-gray-300 rounded-lg bg-gray-100"
+                                    value="Rp 7.000" readonly></div>
+                            <div><label for="diskon" class="text-sm font-medium text-gray-600">Diskon (Rp)</label><input
+                                    type="number" id="diskon"
+                                    class="w-full mt-1 px-3 py-3 border border-gray-300 rounded-lg"
+                                    placeholder="Contoh: 1000"></div>
+                            <div><label for="biaya_antar" class="text-sm font-medium text-gray-600">Biaya Antar
+                                    (Rp)</label><input type="number" id="biaya_antar"
+                                    class="w-full mt-1 px-3 py-3 border border-gray-300 rounded-lg" value="0"></div>
+                            <div class="border-t pt-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-lg font-bold text-gray-900">Total Akhir</span>
+                                    <span class="text-2xl font-bold text-blue-600">Rp 6.000</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label for="metode_bayar_manual" class="text-sm font-medium text-gray-600">Metode
+                                        Bayar</label>
+                                    <select id="metode_bayar_manual"
+                                        class="w-full mt-1 py-3 px-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="Tunai">Tunai</option>
+                                        <option value="QRIS">QRIS</option>
+                                        <option value="Transfer">Transfer</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="status_bayar_manual" class="text-sm font-medium text-gray-600">Status
+                                        Bayar</label>
+                                    <select id="status_bayar_manual"
+                                        class="w-full mt-1 py-3 px-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="Belum Lunas" selected>Belum Lunas</option>
+                                        <option value="Lunas">Lunas</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+            <div class="flex-shrink-0 p-6 bg-white border-t border-gray-200">
+                <button type="submit" form="form-buat-transaksi"
+                    class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700">
+                    Buat Transaksi
+                </button>
+            </div>
+        </div>
+
+        <div id="modal-transaksi-template"
+            class="modal-popup hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-[90vh]">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3">
+                    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+                </div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Buat Transaksi Cepat (POS)</h2>
+                    <button class="btn-close-global p-1 text-gray-500 hover:text-gray-800"><svg data-feather="x"
+                            class="w-6 h-6"></svg></button>
+                </div>
+            </div>
+            <div class="flex-grow overflow-y-auto p-6 no-scrollbar">
+                <form id="form-buat-template" class="space-y-6">
+
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">1. Informasi Pelanggan</h3>
+                        <div class="space-y-4">
+                            <div><label for="cari_pelanggan_template" class="text-sm font-medium text-gray-600">Cari
+                                    Pelanggan (Nama / No HP)</label>
+                                <div class="relative mt-1"><span
+                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                            data-feather="search" class="h-5 w-5 text-gray-400"></svg></span><input
+                                        type="text" id="cari_pelanggan_template"
+                                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                        placeholder="Cari pelanggan yang sudah ada..."></div>
+                            </div>
+                            <p class="text-sm text-gray-600 -mt-2 mb-3">atau masukkan data pelanggan baru ...</p>
+                            <div><label for="nama_pelanggan_template" class="text-sm font-medium text-gray-600">Atau
+                                    Nama
+                                    Pelanggan Baru</label>
+                                <div class="relative mt-1"><span
+                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                            data-feather="user" class="h-5 w-5 text-gray-400"></svg></span><input
+                                        type="text" id="nama_pelanggan_template"
+                                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                        placeholder="Nama Pelanggan Baru"></div>
+                            </div>
+                            <div><label for="no_handphone_template" class="text-sm font-medium text-gray-600">No
+                                    Handphone
+                                    (WA)</label>
+                                <div class="relative mt-1"><span
+                                        class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                            data-feather="phone" class="h-5 w-5 text-gray-400"></svg></span><input
+                                        type="tel" id="no_handphone_template"
+                                        class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                        placeholder="No Handphone Pelanggan"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">2. Informasi Pesanan</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="tgl_selesai_template" class="text-sm font-medium text-gray-600">Estimasi
+                                    Selesai</label>
+                                <input type="datetime-local" id="tgl_selesai_template"
+                                    class="w-full mt-1 px-3 py-3 border border-gray-300 rounded-lg">
+                            </div>
+
+                            <div>
+                                <label for="status_awal_template" class="text-sm font-medium text-gray-600">Status
+                                    Awal</label>
+                                <select id="status_awal_template"
+                                    class="w-full mt-1 py-3 px-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="Antrian" selected>Antrian (Diterima)</option>
+                                    <option value="Diproses">Langsung Diproses</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">3. Pilih Layanan (Menu Cepat)
+                        </h3>
+                        <p class="text-sm text-gray-600 -mt-2 mb-3">(Daftar layanan ini harusnya diambil secara dinamis
+                            dari
+                            menu "Kelola Layanan" Anda)</p>
+
+                        <div class="space-y-2 mb-4" id="keranjang-layanan">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3" id="daftar-layanan-dinamis">
+                            <button type="button"
+                                class="text-left bg-white border border-gray-300 rounded-lg p-3 hover:border-blue-500 hover:bg-blue-50"
+                                data-nama="Kiloan Reguler" data-harga="7000" data-unit="kg">
+                                <p class="font-semibold">Kiloan Reguler</p>
+                                <p class="text-sm text-gray-600">Rp 7.000 / kg</p>
+                            </button>
+                            <button type="button"
+                                class="text-left bg-white border border-gray-300 rounded-lg p-3 hover:border-blue-500 hover:bg-blue-50"
+                                data-nama="Kemeja Satuan" data-harga="15000" data-unit="pcs">
+                                <p class="font-semibold">Kemeja Satuan</p>
+                                <p class="text-sm text-gray-600">Rp 15.000 / pcs</p>
+                            </button>
+                            <button type="button"
+                                class="text-left bg-white border border-gray-300 rounded-lg p-3 hover:border-blue-500 hover:bg-blue-50"
+                                data-nama="Cuci Karpet" data-harga="15000" data-unit="m²">
+                                <p class="font-semibold">Cuci Karpet</p>
+                                <p class="text-sm text-gray-600">Rp 15.000 / m²</p>
+                            </button>
+                            <button type="button"
+                                class="text-left bg-white border border-gray-300 rounded-lg p-3 hover:border-blue-500 hover:bg-blue-50"
+                                data-nama="Bed Cover" data-harga="25000" data-unit="pcs">
+                                <p class="font-semibold">Bed Cover</p>
+                                <p class="text-sm text-gray-600">Rp 25.000 / pcs</p>
+                            </button>
+                        </div>
+
+                        <div>
+                            <div class="border-t pt-4"></div>
+                            <label for="catatan_template" class="text-sm font-medium text-gray-600">Catatan
+                                (Opsional)</label>
+                            <div class="relative mt-1"><span
+                                    class="absolute inset-y-0 left-0 top-3 pl-3 flex items-start pointer-events-none"><svg
+                                        data-feather="clipboard" class="h-5 w-5 text-gray-400"></svg></span><textarea
+                                    id="catatan_template" rows="2"
+                                    class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                    placeholder="Misal: Alergi parfum, minta lipat rapi..."></textarea></div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b">4. Rincian Pembayaran</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-lg font-bold text-gray-900">Total Akhir</span>
+                                    <span class="text-2xl font-bold text-blue-600" id="template-total-akhir">Rp 0</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label for="metode_bayar_template" class="text-sm font-medium text-gray-600">Metode
+                                        Bayar</label>
+                                    <select id="metode_bayar_template"
+                                        class="w-full mt-1 py-3 px-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="Tunai">Tunai</option>
+                                        <option value="QRIS">QRIS</option>
+                                        <option value="Transfer">Transfer</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="status_bayar_template" class="text-sm font-medium text-gray-600">Status
+                                        Bayar</label>
+                                    <select id="status_bayar_template"
+                                        class="w-full mt-1 py-3 px-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="Belum Lunas" selected>Belum Lunas</option>
+                                        <option value="Lunas">Lunas</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </form>
+            </div>
+
+            <div class="flex-shrink-0 p-6 bg-white border-t border-gray-200">
+                <button type="submit" form="form-buat-template"
+                    class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700">
+                    Buat Transaksi
+                </button>
+            </div>
+        </div>
+
+        <!-- (Komentar) MODAL 4: Modal Absensi (IMPROVEMENT) -->
+        <div id="modal-absensi"
+            class="modal-popup hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-auto">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3">
+                    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+                </div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Absensi Karyawan</h2>
+                    <button class="btn-close-global p-1 text-gray-500 hover:text-gray-800"><svg data-feather="x"
+                            class="w-6 h-6"></svg></button>
+                </div>
+            </div>
+
+            <div id="tab-presensi">
+                <div class="p-6 text-center">
+                    <p class="text-gray-600 mb-2">Waktu server saat ini:</p>
+                    <p id="live-clock" class="text-4xl font-bold text-gray-900">00:00:00</p>
+                    <p id="live-date" class="text-sm text-gray-500">Memuat...</p>
+                </div>
+                <div class="p-6 space-y-3 border-t border-gray-100">
+                    <button id="btn-absen-masuk"
+                        class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 text-lg flex items-center justify-center">
+                        <svg data-feather="log-in" class="w-5 h-5 mr-2"></svg>
+                        Absen Masuk
+                    </button>
+                    <button id="btn-absen-pulang"
+                        class="w-full bg-red-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-red-700 text-lg flex items-center justify-center">
+                        <svg data-feather="log-out" class="w-5 h-5 mr-2"></svg>
+                        Absen Pulang
+                    </button>
+                </div>
+            </div>
+            
+            </div>
+
+        <!-- (Komentar) MODAL 5: Notifikasi Toast (Sama) -->
+        <div id="toast-notifikasi"
+            class="hidden fixed bottom-24 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm font-medium py-2 px-4 rounded-full z-60 transition-all duration-300 opacity-0">
+            Absen berhasil dicatat!
+        </div>
+
+    </div> <!-- (Komentar) Penutup Modal Container -->
+
+
+    <!-- ====================================================== -->
+    <!-- (Komentar) 4. SCRIPT                                   -->
+    <!-- ====================================================== -->
+    <!-- (Komentar) PERUBAHAN: Path disesuaikan (naik 2 level) -->
+    <script src="../../assets/js/icons.js" defer></script>
+    <script src="../../assets/js/main.js" defer></script>
+    <!-- (Komentar) Path ke skrip khusus halaman ini -->
+    <script src="../../assets/js/karyawan-dashboard.js" defer></script>
+</body>
+
+</html>

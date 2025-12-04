@@ -1,0 +1,111 @@
+/* WebView Specific Styles */
+:root {
+    --base-font-size: 14px;
+}
+
+/* Base font size for better readability on mobile */
+html {
+    font-size: var(--base-font-size);
+}
+
+/* Heading Sizes */
+.text-2xl {
+    font-size: 1.5rem !important; /* 21px */
+}
+
+.text-xl {
+    font-size: 1.25rem !important; /* 17.5px */
+}
+
+.text-lg {
+    font-size: 1.125rem !important; /* 15.75px */
+}
+
+.text-base {
+    font-size: 1rem !important; /* 14px */
+}
+
+.text-sm {
+    font-size: 0.875rem !important; /* 12.25px */
+}
+
+.text-xs {
+    font-size: 0.75rem !important; /* 10.5px */
+}
+
+/* Form Elements */
+input, select, textarea {
+    font-size: 1rem !important; /* 14px */
+}
+
+/* Buttons */
+button, .btn {
+    font-size: 0.875rem !important; /* 12.25px */
+}
+
+/* Navigation */
+.nav-item {
+    font-size: 0.875rem !important;
+}
+
+/* Card and List Text */
+.card-title {
+    font-size: 1.125rem !important;
+}
+
+.card-text {
+    font-size: 0.875rem !important;
+}
+
+/* Tables */
+table {
+    font-size: 0.875rem !important;
+}
+
+th {
+    font-size: 0.875rem !important;
+}
+
+/* Labels and Small Text */
+label, .small-text {
+    font-size: 0.75rem !important;
+}
+
+/* Price Text */
+.price-text {
+    font-size: 1.25rem !important;
+}
+
+/* Status Text */
+.status-text {
+    font-size: 0.875rem !important;
+}
+
+/* Modal Titles */
+.modal-title {
+    font-size: 1.25rem !important;
+}
+
+/* Better touch targets for mobile */
+button, 
+input[type="button"], 
+input[type="submit"],
+.clickable {
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+}
+
+/* Improved spacing for mobile */
+.section {
+    padding: 1rem;
+}
+
+.card {
+    padding: 0.75rem;
+}
+
+/* Optimize form elements for mobile */
+input, select, textarea {
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+}

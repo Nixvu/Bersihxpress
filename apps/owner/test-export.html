@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Export - BersihXpress</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-bold mb-4">Test Export Function</h1>
+        
+        <!-- Test Button -->
+        <button id="btn-test-export" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Test Export API
+        </button>
+        
+        <!-- Export Modal -->
+        <div id="modal-container" class="hidden fixed inset-0 z-50">
+            <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-50"></div>
+            <div id="modal-export" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-lg p-6 transform translate-y-full transition-transform">
+                <h2 class="text-xl font-bold mb-4">Test Export</h2>
+                <form id="form-export">
+                    <div class="space-y-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="export_pendapatan" checked class="mr-2">
+                            <span>Export Pendapatan</span>
+                        </label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="format" value="pdf" checked class="mr-2">
+                                <span>PDF</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="format" value="csv" class="mr-2">
+                                <span>CSV</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
+                            Export
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Test page loaded');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM ready');
+            
+            const btnTestExport = document.getElementById('btn-test-export');
+            const modalContainer = document.getElementById('modal-container');
+            const modalExport = document.getElementById('modal-export');
+            const formExport = document.getElementById('form-export');
+            
+            btnTestExport.addEventListener('click', function() {
+                console.log('Test export button clicked');
+                modalContainer.classList.remove('hidden');
+                setTimeout(() => {
+                    modalExport.style.transform = 'translateY(0)';
+                }, 10);
+            });
+            
+            formExport.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                console.log('Form submitted');
+                
+                const formData = new FormData(formExport);
+                const exportData = [];
+                if (formData.get('export_pendapatan')) {
+                    exportData.push('export_pendapatan');
+                }
+                
+                const data = {
+                    format: formData.get('format') || 'pdf',
+                    exportData: exportData,
+                    filterType: 'bulan_ini',
+                    tanggalMulai: null,
+                    tanggalSelesai: null
+                };
+                
+                console.log('Sending data:', data);
+                
+                try {
+                    const response = await fetch('api/export.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    console.log('Response status:', response.status);
+                    const result = await response.json();
+                    console.log('Result:', result);
+                    
+                    if (result.success) {
+                        alert('Export berhasil! File: ' + result.filename);
+                    } else {
+                        alert('Export gagal: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error: ' + error.message);
+                }
+            });
+            
+            // Close modal
+            document.getElementById('modal-backdrop').addEventListener('click', function() {
+                modalExport.style.transform = 'translateY(100%)';
+                setTimeout(() => {
+                    modalContainer.classList.add('hidden');
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

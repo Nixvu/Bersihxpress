@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Bisnis - BersihXpress</title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/webview.css">
+    <script src="../../assets/js/webview.js"></script>
+    <script src="../../assets/js/tailwind.js"></script>
+</head>
+<body class="bg-gray-100 flex flex-col h-screen">
+    <div id="loading-overlay" class="loading-container">
+        <img src="../../assets/images/loading.gif" alt="Memuat..." class="loading-indicator">
+    </div>
+    <div id="main-content" class="flex-grow overflow-y-auto no-scrollbar pb-24">
+
+        <header class="relative z-10 bg-blue-600 rounded-b-[32px] p-6 pb-28 shadow-lg flex-shrink-0">
+            <h1 class="text-2xl font-bold text-white">Kelola Bisnis</h1>
+            <p class="text-sm opacity-90 text-white">BersihXpress</p>
+        </header>
+        
+        <main class="relative z-20 -mt-20 px-6">
+            <section class="bg-white rounded-lg shadow-md p-5">
+                <div class="flex items-center space-x-4 border-b pb-4">
+                    <img src="https://placehold.co/64x64/EFEFEF/333333?text=Logo" alt="Logo Usaha" class="w-16 h-16 rounded-lg">
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">BersihXpress</h2>
+                        <p class="text-sm text-gray-500">Jl Re Martadinata Kuningan</p>
+                    </div>
+                </div>
+                <div class="flex justify-around text-center pt-4">
+                    <div>
+                        <p class="text-xl font-bold text-gray-900">280</p>
+                        <span class="text-sm text-gray-500">Pelanggan</span>
+                    </div>
+                    <div>
+                        <p class="text-xl font-bold text-gray-900">8</p>
+                        <span class="text-sm text-gray-500">Layanan</span>
+                    </div>
+                    <div>
+                        <p class="text-xl font-bold text-gray-900">5</p>
+                        <span class="text-sm text-gray-500">Karyawan</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="px-6 mt-6">
+            <div class="bg-white rounded-lg shadow overflow-hidden divide-y divide-gray-200">
+                
+                <button id="btn-profil-usaha" class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gray-100 rounded-lg mr-3"><svg data-feather="briefcase" class="w-5 h-5 text-gray-700"></svg></div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Profil Usaha</p>
+                            <p class="text-sm text-gray-500">Perbaharui informasi usaha</p>
+                        </div>
+                    </div>
+                    <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                </button>
+                
+                <a href="layanan.html" class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gray-100 rounded-lg mr-3"><svg data-feather="tag" class="w-5 h-5 text-gray-700"></svg></div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Kelola Layanan</p>
+                            <p class="text-sm text-gray-500">Kelola layanan laundry</p>
+                        </div>
+                    </div>
+                    <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                </a>
+                
+                <a href="pelanggan.html" class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gray-100 rounded-lg mr-3"><svg data-feather="users" class="w-5 h-5 text-gray-700"></svg></div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Kelola Pelanggan</p>
+                            <p class="text-sm text-gray-500">Kelola data pelanggan</p>
+                        </div>
+                    </div>
+                    <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                </a>
+                
+                <a href="template.html" class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gray-100 rounded-lg mr-3"><svg data-feather="file-text" class="w-5 h-5 text-gray-700"></svg></div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Template Nota</p>
+                            <p class="text-sm text-gray-500">Kelola template nota & pesan</p>
+                        </div>
+                    </div>
+                    <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                </a>
+                
+                <a href="karyawan.html" class="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gray-100 rounded-lg mr-3"><svg data-feather="user-check" class="w-5 h-5 text-gray-700"></svg></div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Kelola Karyawan</p>
+                            <p class="text-sm text-gray-500">Kelola data karyawan</p>
+                        </div>
+                    </div>
+                    <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                </a>
+            </div> </nav>
+
+    </div>
+
+    <nav class="sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 grid grid-cols-5 gap-2 px-4 py-3 shadow-[0_-2px_5px_rgba(0,0,0,0.05)] flex-shrink-0 z-20">
+        <a href="kelola.html" class="flex flex-col items-center text-blue-600 bg-blue-100 rounded-lg px-4 py-2">
+            <svg data-feather="grid" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1 font-semibold">Kelola</span>
+        </a>
+        <a href="transaksi.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="file-text" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Transaksi</span>
+        </a>
+        <a href="dashboard.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="home" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Beranda</span>
+        </a>
+        <a href="laporan.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="bar-chart-2" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Laporan</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="user" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Akun</span>
+        </a>
+    </nav>
+
+    <div id="modal-container" class="hidden z-30">
+        
+        <div id="modal-backdrop" class="modal-backdrop fixed inset-0 bg-black/50 z-40 opacity-0"></div>
+
+        <div id="modal-profil-usaha" class="modal-popup fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-[90vh]">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3"><div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div></div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Profil Usaha</h2>
+                    <button class="btn-close-modal p-1 text-gray-500 hover:text-gray-800">
+                        <svg data-feather="x" class="w-6 h-6"></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex-grow overflow-y-auto p-6 no-scrollbar">
+                <form id="form-profil-usaha" class="space-y-4" method="POST" action="/owner/form-profil-usaha.php">
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg p-5 space-y-4">
+                        <div>
+                            <label for="nama_usaha" class="text-sm font-medium text-gray-600">Nama Usaha Laundry</label>
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg data-feather="home" class="h-5 w-5 text-gray-400"></svg></span>
+                                <input type="text" id="nama_usaha" name="nama_usaha" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg" placeholder="Nama Usaha Laundry">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="no_handphone" class="text-sm font-medium text-gray-600">No Handphone</label>
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg data-feather="phone" class="h-5 w-5 text-gray-400"></svg></span>
+                                <input type="tel" id="no_handphone" name="no_handphone" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg" placeholder="No Handphone">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="jam_operasional" class="text-sm font-medium text-gray-600">Jam Operasional</LabeL>
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg data-feather="clock" class="h-5 w-5 text-gray-400"></svg></span>
+                                <input type="text" id="jam_operasional" name="jam_operasional" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg" placeholder="Contoh 10:00 - 18:00">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="alamat_usaha" class="text-sm font-medium text-gray-600">Alamat Usaha Laundry</label>
+                            <div class="relative mt-1">
+                                <span class="absolute inset-y-0 left-0 top-3 pl-3 flex items-start pointer-events-none"><svg data-feather="map-pin" class="h-5 w-5 text-gray-400"></svg></span>
+                                <textarea id="alamat_usaha" name="alamat_usaha" rows="3" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg" placeholder="Contoh : Jln Re Martadinata"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="flex-shrink-0 p-6 bg-white border-t border-gray-200">
+                <button type="submit" form="form-profil-usaha" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700">
+                    Simpan Perubahan
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../assets/js/icons.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/owner-kelola.js"></script>
+</body>
+</html>

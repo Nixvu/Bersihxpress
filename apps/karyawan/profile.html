@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Akun - BersihXpress</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/webview.css">
+    <script src="../../assets/js/webview.js"></script>
+    <script src="../../assets/js/tailwind.js"></script>
+</head>
+
+<body class="bg-gray-100 flex flex-col h-screen">
+    <div id="loading-overlay" class="loading-container">
+        <img src="../../assets/images/loading.gif" alt="Memuat..." class="loading-indicator">
+    </div>
+    <!-- ====================================================== -->
+    <!-- (Komentar) 1. KONTEN UTAMA HALAMAN                     -->
+    <!-- ====================================================== -->
+    <div id="main-content" class="flex-grow flex flex-col overflow-hidden">
+
+        <!-- (Komentar) Wrapper Sticky untuk Header dan Kartu Profil -->
+        <div class="flex-shrink-0">
+            <header class="relative bg-blue-600 h-56 w-full rounded-b-[40px] p-6 text-white z-10">
+                <h1 class="text-2xl font-bold">Pengaturan Akun</h1>
+                <p class="text-sm opacity-90">BersihXpress</p>
+            </header>
+
+            <main class="relative z-20 -mt-24 px-6">
+                <section class="bg-white rounded-lg shadow-md p-5">
+                    <div class="flex items-center space-x-4 border-b pb-4">
+                        <img src="https://placehold.co/64x64/EFEFEF/333333?text=F" alt="Avatar Pengguna"
+                            class="w-16 h-16 rounded-full" id="profil-avatar-main">
+                        <div>
+                            <p class="text-lg font-bold text-gray-900 flex items-center" id="profil-nama-main">
+                                John Doe
+                                <svg data-feather="check-circle" class="w-5 h-5 text-blue-500 fill-white ml-2"></svg>
+                            </p>
+                            <p class="text-sm text-gray-500">Karyawan BersihXpress Laundry</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-around text-center pt-4">
+                        <div class="w-2/3">
+                            <p class="text-sm font-semibold text-gray-900 truncate" id="profil-email-main">
+                                johndoe@bersihxpress.com</p>
+                            <span class="text-sm text-gray-500">Email</span>
+                        </div>
+                        <div class="w-1/3 border-l">
+                            <p class="text-sm font-semibold text-gray-900">20/10/25</p>
+                            <span class="text-sm text-gray-500">Bergabung</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div> <!-- (Komentar) Penutup Wrapper Sticky -->
+
+        <!-- (Komentar) Area Menu (Scrollable) -->
+        <div class="flex-grow overflow-y-auto no-scrollbar px-6 pb-24">
+
+            <!-- (Komentar) Grup Menu Pengaturan -->
+            <section class="mt-6">
+                <h2 class="text-base font-semibold text-gray-600 mb-2 px-1">Pengaturan Akun</h2>
+                <div class="bg-white rounded-lg shadow space-y-1">
+                    <!-- (Komentar) PERUBAHAN: Mengubah <a> menjadi <button> dan menambah ID -->
+                    <button id="btn-edit-profil"
+                        class="w-full flex items-center justify-between p-4 hover:bg-gray-50 rounded-t-lg text-left">
+                        <div class="flex items-center">
+                            <svg data-feather="user" class="w-5 h-5 text-gray-500 mr-4"></svg>
+                            <div>
+                                <p class="font-medium text-gray-800">Edit Profil</p>
+                                <p class="text-sm text-gray-500">Perbaharui informasi akun</p>
+                            </div>
+                        </div>
+                        <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                    </button>
+
+                    <!-- (Komentar) PERUBAHAN: Mengubah <a> menjadi <button> dan menambah ID -->
+                    <button id="btn-ubah-password"
+                        class="w-full flex items-center justify-between p-4 hover:bg-gray-50 text-left">
+                        <div class="flex items-center">
+                            <svg data-feather="lock" class="w-5 h-5 text-gray-500 mr-4"></svg>
+                            <div>
+                                <p class="font-medium text-gray-800">Ubah Kata Sandi</p>
+                            </div>
+                        </div>
+                        <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- (Komentar) Grup Menu Aplikasi -->
+            <section class="mt-6">
+                <h2 class="text-base font-semibold text-gray-600 mb-2 px-1">Pengaturan Aplikasi</h2>
+                <div class="bg-white rounded-lg shadow divide-y">
+
+                    <!-- (Komentar) PERUBAHAN: Toggle Notifikasi (fungsional) -->
+                    <div class="flex items-center justify-between p-4">
+                        <div class="flex items-center">
+                            <svg data-feather="bell" class="w-5 h-5 text-gray-500 mr-4"></svg>
+                            <p class="font-medium text-gray-800">Notifikasi</p>
+                        </div>
+                        <label for="toggleNotif" class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="toggleNotif" class="sr-only toggle-checkbox" checked>
+                            <div class="w-11 h-6 bg-gray-200 rounded-full toggle-label-bg"></div>
+                            <div
+                                class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform toggle-label">
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- (Komentar) PERUBAHAN: Tautan 'href' diperbarui -->
+                    <a href="tentang.html" class="flex items-center justify-between p-4 hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <svg data-feather="info" class="w-5 h-5 text-gray-500 mr-4"></svg>
+                            <div>
+                                <p class="font-medium text-gray-800">Tentang Aplikasi</p>
+                            </div>
+                        </div>
+                        <svg data-feather="chevron-right" class="w-5 h-5 text-gray-400"></svg>
+                    </a>
+                </div>
+            </section>
+
+            <!-- (Komentar) Grup Aksi Berbahaya (Keluar Akun) -->
+            <section class="mt-6">
+                <div class="bg-white rounded-lg shadow">
+                    <!-- (Komentar) PERUBAHAN: Menambah ID -->
+                    <button id="btn-keluar-akun"
+                        class="w-full flex items-center justify-between p-4 text-red-600 hover:bg-red-50 rounded-lg">
+                        <div class="flex items-center">
+                            <svg data-feather="log-out" class="w-5 h-5 mr-4"></svg>
+                            <p class="font-medium">Keluar Akun</p>
+                        </div>
+                        <svg data-feather="chevron-right" class="w-5 h-5"></svg>
+                    </button>
+                </div>
+            </section>
+
+        </div> <!-- (Komentar) Penutup Area Scroll -->
+
+    </div> <!-- (Komentar) Penutup main-content -->
+
+    <!-- ====================================================== -->
+    <!-- (Komentar) 2. NAVIGASI BAWAH (BOTTOM NAV) (Sticky)     -->
+    <!-- ====================================================== -->
+    <nav
+        class="sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 grid grid-cols-4 gap-2 px-4 py-3 shadow-[0_-2px_5px_rgba(0,0,0,0.05)] flex-shrink-0 z-20">
+
+        <a href="dashboard.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="home" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1 font-semibold">Beranda</span>
+        </a>
+
+        <a href="transaksi.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="file-text" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Transaksi</span>
+        </a>
+
+        <a href="laporan.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="bar-chart-2" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Laporan</span>
+        </a>
+
+        <a href="profile.html" class="flex flex-col items-center text-blue-600 bg-blue-100 rounded-lg px-4 py-2">
+            <svg data-feather="user" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Akun</span>
+        </a>
+    </nav>
+
+    <!-- ====================================================== -->
+    <!-- (Komentar) 3. KONTAINER MODAL (POPUP) (BARU)           -->
+    <!-- ====================================================== -->
+    <div id="modal-container" class="hidden z-30">
+
+        <!-- (Komentar) Backdrop Gelap (z-40) -->
+        <div id="modal-backdrop" class="modal-backdrop fixed inset-0 bg-black/50 z-40 opacity-0"></div>
+
+        <!-- (Komentar) MODAL 1: Edit Profil (Slide-up, z-50) -->
+        <div id="modal-edit-profil"
+            class="modal-popup fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-[90vh]">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3">
+                    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+                </div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Edit Profil</h2>
+                    <button class="btn-close-modal p-1 text-gray-500 hover:text-gray-800"
+                        data-modal-id="modal-edit-profil">
+                        <svg data-feather="x" class="w-6 h-6"></svg>
+                    </button>
+                </div>
+            </div>
+            <!-- (Komentar) Form -->
+            <div class="flex-grow overflow-y-auto p-6 no-scrollbar">
+                <form id="form-edit-profil" class="space-y-4">
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/96x96/EFEFEF/333333?text=F" alt="Avatar"
+                            class="w-24 h-24 rounded-full mb-2" id="profil-avatar-form">
+                        <input type="file" id="profil_upload" class="hidden">
+                        <label for="profil_upload"
+                            class="cursor-pointer text-sm font-medium text-blue-600 hover:text-blue-700">
+                            Ganti Foto
+                        </label>
+                    </div>
+                    <div><label for="profil_nama" class="text-sm font-medium text-gray-600">Nama Lengkap</label>
+                        <div class="relative mt-1"><span
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                    data-feather="user" class="h-5 w-5 text-gray-400"></svg></span>
+                            <input type="text" id="profil_nama"
+                                class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg" value="John Doe">
+                        </div>
+                    </div>
+                    <div><label for="profil_email" class="text-sm font-medium text-gray-600">Email</label>
+                        <div class="relative mt-1"><span
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                    data-feather="mail" class="h-5 w-5 text-gray-400"></svg></span>
+                            <input type="email" id="profil_email"
+                                class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                value="johndoe@bersihxpress.com">
+                        </div>
+                    </div>
+                    <div><label for="profil_no_hp" class="text-sm font-medium text-gray-600">No. Handphone</label>
+                        <div class="relative mt-1"><span
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                    data-feather="phone" class="h-5 w-5 text-gray-400"></svg></span>
+                            <input type="tel" id="profil_no_hp"
+                                class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                placeholder="Masukkan No. Handphone">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="flex-shrink-0 p-6 bg-white border-t border-gray-200">
+                <button type="submit" form="form-edit-profil"
+                    class="btn-simpan w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700"
+                    data-modal-id="modal-edit-profil">
+                    Simpan Perubahan
+                </button>
+            </div>
+        </div>
+
+        <!-- (Komentar) MODAL 2: Ubah Password (Slide-up, z-50) -->
+        <div id="modal-ubah-password"
+            class="modal-popup fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-auto">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3">
+                    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+                </div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 class="text-xl font-bold text-gray-900">Ubah Kata Sandi</h2>
+                    <button class="btn-close-modal p-1 text-gray-500 hover:text-gray-800"
+                        data-modal-id="modal-ubah-password">
+                        <svg data-feather="x" class="w-6 h-6"></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-grow overflow-y-auto p-6 no-scrollbar">
+                <form id="form-ubah-password" class="space-y-4">
+                    <div><label for="pass_lama" class="text-sm font-medium text-gray-600">Password Lama</label>
+                        <div class="relative mt-1"><span
+                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                    data-feather="lock" class="h-5 w-5 text-gray-400"></svg></span>
+                            <input type="password" id="pass_lama"
+                                class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                placeholder="Masukkan password lama">
+                        </div>
+                    </div>
+                    <div><label for="pass_baru" class="text-sm font-medium text-gray-600">Password Baru</p>
+                            <div class="relative mt-1"><span
+                                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                        data-feather="key" class="h-5 w-5 text-gray-400"></svg></span>
+                                <input type="password" id="pass_baru"
+                                    class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                    placeholder="Masukkan password baru">
+                            </div>
+                    </div>
+                    <div><label for="pass_konfirmasi" class="text-sm font-medium text-gray-600">Konfirmasi Password Baru
+                            </p>
+                            <div class="relative mt-1"><span
+                                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><svg
+                                        data-feather="key" class="h-5 w-5 text-gray-400"></svg></span>
+                                <input type="password" id="pass_konfirmasi"
+                                    class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                                    placeholder="Ulangi password baru">
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <div class="flex-shrink-0 p-6 bg-white border-t border-gray-200">
+                <button type="submit" form="form-ubah-password"
+                    class="btn-simpan w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700"
+                    data-modal-id="modal-ubah-password">
+                    Simpan Password
+                </button>
+            </div>
+        </div>
+
+        <!-- (Komentar) MODAL 3: Konfirmasi Keluar Akun (Centered, z-60) -->
+        <div id="modal-keluar-akun"
+            class="modal-centered hidden fixed inset-0 z-50 flex items-center justify-center p-6">
+            <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm">
+                <h2 class="text-xl font-bold text-gray-900 mb-2">Keluar Akun</h2>
+                <p class="text-sm text-gray-600 mb-6">Anda yakin ingin keluar dari aplikasi BersihXpress?</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <button
+                        class="btn-keluar-confirm w-full bg-red-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-red-700">
+                        Keluar
+                    </button>
+                    <button
+                        class="btn-close-centered w-full bg-white border border-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-lg hover:bg-gray-50"
+                        data-modal-id="modal-keluar-akun">
+                        Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- (Komentar) MODAL 4: Notifikasi Toast (z-60) -->
+        <div id="toast-notifikasi"
+            class="hidden fixed bottom-24 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm font-medium py-2 px-4 rounded-full z-60 transition-all duration-300 opacity-0">
+            Notifikasi diaktifkan!
+        </div>
+
+    </div>
+
+    <script src="../../assets/js/icons.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/owner-profile.js"></script>
+</body>
+
+</html>

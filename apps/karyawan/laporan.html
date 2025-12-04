@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Kinerja - BersihXpress</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/webview.css">
+    <script src="../../assets/js/webview.js"></script>
+    <script src="../../assets/js/tailwind.js"></script>
+</head>
+
+<body class="bg-gray-100 flex flex-col h-screen">
+    <div id="loading-overlay" class="loading-container">
+        <img src="../../assets/images/loading.gif" alt="Memuat..." class="loading-indicator">
+    </div>
+
+    <div id="main-content" class="flex-grow flex flex-col overflow-hidden">
+
+        <header class="sticky top-0 z-10 bg-blue-600 rounded-b-[32px] p-6 pb-6 shadow-lg flex-shrink-0">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-white">Laporan Kinerja</h1>
+                    <p id="active-filter-display" class="text-sm opacity-90 text-white">Filter: Bulan Ini</p>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="btn-filter-tanggal" type="button" class="p-2 bg-white/20 rounded-lg hover:bg-white/30"
+                        aria-label="Filter tanggal">
+                        <svg data-feather="calendar" class="w-6 h-6 text-white" aria-hidden="true"></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-grow overflow-y-auto p-6 space-y-6 pb-24 no-scrollbar">
+
+            <section class="bg-white rounded-lg shadow-md p-5 text-center">
+                <h2 class="text-base font-semibold text-gray-800 mb-2">Estimasi Pendapatan Gaji (Bulan Ini)</h2>
+
+                <p class="text-4xl font-bold text-blue-600 mb-4">Rp 1.450.000</p>
+
+                <div class="grid grid-cols-2 gap-3 text-center border-t pt-4">
+                    <div>
+                        <p class="text-xl font-bold text-gray-900">725 Kg</p>
+                        <span class="text-sm text-gray-500">Total Kiloan Selesai</span>
+                    </div>
+                    <div>
+                        <p class="text-xl font-bold text-gray-900">22 Hari</p>
+                        <span class="text-sm text-gray-500">Total Kehadiran</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-lg font-semibold text-gray-800 mb-3">Rincian Kinerja Selesai (Bulan Ini)</h2>
+                <div class="bg-white rounded-lg shadow p-4 divide-y divide-gray-100">
+                    <div class="flex justify-between items-center py-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Nota #0913123 (Kosimudin)</p>
+                            <p class="text-xs text-gray-500">Selesai: 21 Nov 2025, 16:00</p>
+                        </div>
+                        <span class="text-sm font-medium text-green-600">+ 5 Kg</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Nota #0913120 (Jajang)</p>
+                            <p class="text-xs text-gray-500">Selesai: 20 Nov 2025, 14:30</p>
+                        </div>
+                        <span class="text-sm font-medium text-green-600">+ 2 Pcs</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Nota #0913119 (Siti)</p>
+                            <p class="text-xs text-gray-500">Selesai: 20 Nov 2025, 10:15</p>
+                        </div>
+                        <span class="text-sm font-medium text-green-600">+ 3 Kg</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-lg font-semibold text-gray-800 mb-3">Rincian Absensi (Bulan Ini)</h2>
+                <div class="bg-white rounded-lg shadow p-4 divide-y divide-gray-100">
+                    <div class="flex justify-between items-center py-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Absen Masuk</p>
+                            <p class="text-xs text-gray-500">21 Nov 2025</p>
+                        </div>
+                        <span class="text-sm font-medium text-gray-800">08:01 (<span
+                                class="text-red-500">Terlambat</span>)</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Absen Pulang</p>
+                            <p class="text-xs text-gray-500">20 Nov 2025</p>
+                        </div>
+                        <span class="text-sm font-medium text-gray-800">17:05</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3">
+                        <div>
+                            <p class="text-sm font-semibold text-gray-900">Absen Masuk</p>
+                            <p class="text-xs text-gray-500">20 Nov 2025</p>
+                        </div>
+                        <span class="text-sm font-medium text-gray-800">07:58 (<span class="text-green-500">Tepat
+                                Waktu</span>)</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <nav
+        class="sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 grid grid-cols-4 gap-2 px-4 py-3 shadow-[0_-2px_5px_rgba(0,0,0,0.05)] flex-shrink-0 z-20">
+
+        <a href="dashboard.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="home" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Beranda</span>
+        </a>
+
+        <a href="transaksi.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="file-text" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Transaksi</span>
+        </a>
+
+        <a href="laporan.html" class="flex flex-col items-center text-blue-600 bg-blue-100 rounded-lg px-4 py-2">
+            <svg data-feather="bar-chart-2" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1 font-semibold">Laporan</span>
+        </a>
+
+        <a href="profile.html" class="flex flex-col items-center text-gray-500 px-4 py-2">
+            <svg data-feather="user" class="w-6 h-6"></svg>
+            <span class="text-xs mt-1">Akun</span>
+        </a>
+    </nav>
+
+
+    <div id="modal-container" class="hidden z-30" aria-hidden="true">
+
+        <div id="modal-backdrop" class="modal-backdrop fixed inset-0 bg-black/50 z-40 opacity-0"></div>
+
+        <div id="modal-filter-tanggal"
+            class="modal-popup fixed bottom-0 left-0 right-0 bg-white rounded-t-[24px] shadow-2xl z-50 flex flex-col h-auto"
+            role="dialog" aria-modal="true" aria-labelledby="filter-title">
+            <div class="flex-shrink-0">
+                <div class="w-full py-3">
+                    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+                </div>
+                <div class="flex justify-between items-center px-6 pb-4">
+                    <h2 id="filter-title" class="text-xl font-bold text-gray-900">Filter Waktu</h2>
+                    <button class="btn-close-modal p-1 text-gray-500 hover:text-gray-800"
+                        data-modal-id="modal-filter-tanggal" type="button" aria-label="Tutup modal filter">
+                        <svg data-feather="x" class="w-6 h-6" aria-hidden="true"></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex-grow overflow-y-auto p-6 no-scrollbar">
+                <form id="form-filter" class="space-y-6">
+                    <section>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3">Filter Cepat</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button"
+                                class="btn-quick-filter w-full py-3 px-4 bg-gray-100 rounded-lg font-medium text-gray-700"
+                                data-filter-text="Filter: Hari Ini">Hari Ini</button>
+                            <button type="button"
+                                class="btn-quick-filter w-full py-3 px-4 bg-gray-100 rounded-lg font-medium text-gray-700"
+                                data-filter-text="Filter: Minggu Ini">Minggu Ini</button>
+                            <button type="button"
+                                class="btn-quick-filter w-full py-3 px-4 bg-blue-100 rounded-lg font-bold text-blue-700"
+                                data-filter-text="Filter: Bulan Ini">Bulan Ini</button>
+                            <button type="button"
+                                class="btn-quick-filter w-full py-3 px-4 bg-gray-100 rounded-lg font-medium text-gray-700"
+                                data-filter-text="Filter: Bulan Lalu">Bulan Lalu</button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+
+            <div class="flex-shrink-0 p-6 bg-white border-t border-gray-200">
+                <button type="button"
+                    class="btn-close-modal w-full bg-white border border-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-50"
+                    data-modal-id="modal-filter-tanggal">
+                    Tutup
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../assets/js/icons.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    </body>
+</html>
